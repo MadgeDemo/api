@@ -27,12 +27,12 @@ class Cart extends REST_Controller
 		if (empty($cart)) $this->response([
 									'status' => FALSE,
 									'message' => 'No services found in cart'
-								], HTTP_NOT_FOUND);
+								], REST_Controller::HTTP_NOT_FOUND);
 		$this->response([
 				'status' => TRUE,
 				'message' => 'Cart data found',
 				'data' => $cart
-			], HTTP_OK);
+			], REST_Controller::HTTP_OK);
 	}
 
 	public function index_post()
@@ -49,7 +49,7 @@ class Cart extends REST_Controller
 		$this->response([
 				'status' => TRUE,
 				'message' => 'Successfully added service to cart'
-			], HTTP_OK);
+			], REST_Controller::HTTP_OK);
 	}
 
 	public function checkout_post()
@@ -66,6 +66,6 @@ class Cart extends REST_Controller
 				'status' => TRUE,
 				'message' => 'Successfully added order, move to payment',
 				'data' => $checkout
-			], HTTP_OK);
+			], REST_Controller::HTTP_OK);
 	}
 }

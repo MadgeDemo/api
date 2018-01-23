@@ -23,7 +23,7 @@ class Service_model extends CI_Model
 			$data[] = array(
 							'ID' => $value->id,
 							'name' => $value->name,
-							'desctiption' => $value->description,
+							'description' => $value->description,
 							'price' => $value->value
 						);
 		}

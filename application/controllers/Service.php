@@ -20,7 +20,7 @@ class Service extends REST_Controller
 		$response = $this->service_model->get_services($id);
 
 		if ($response) {
-			$this->response($response, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+			$this->response(["services" => $response], REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
        } else {
            $this->response([
                     'status' => FALSE,
