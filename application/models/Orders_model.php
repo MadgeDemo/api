@@ -16,7 +16,7 @@ class Orders_model extends CI_Model
 	{
 		if (empty($email)) return null;
 
-		$this->db->select(['services.name', 'services.description', 'transactions.value', 'transactions.created_date', 'users.name', 'users.email', 'transactions.id as transactionsID']);
+		$this->db->select(['services.name as service', 'services.description', 'transactions.value', 'transactions.created_date', 'users.name as user', 'users.email', 'transactions.id as transactionsID', 'services.id as serviceID']);
 		$this->db->from('transactions');
 		$this->db->join('services', 'services.id = transactions.service_id');
 		$this->db->join('users', 'transactions.user_id = users.id');

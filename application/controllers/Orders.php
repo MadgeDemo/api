@@ -32,7 +32,11 @@ class Orders extends REST_Controller
 					                'message' => 'No data was found'
 					            ], REST_Controller::HTTP_NOT_FOUND);
 
-		$this->response($orders, REST_Controller::HTTP_OK);
+		$this->response([
+					'status' => TRUE,
+	                'message' => 'Data found',
+	                'data' => $orders
+	            ], REST_Controller::HTTP_OK);
 	}
 }
 ?>
