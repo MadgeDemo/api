@@ -39,7 +39,7 @@ class Cart_model extends CI_Model
 		$usr = self::get_user($email);
 		if (empty($usr)) return null;
 
-		$this->db->select(['services.name', 'services.description', 'cart.value', 'cart.date', 'cart.id as cartID']);
+		$this->db->select(['services.id', 'services.name', 'services.description', 'cart.value', 'cart.date', 'cart.id as cartID']);
 		$this->db->from('cart');
 		$this->db->join('services', 'services.id = cart.service_id');
 		$this->db->where(['cart.user_id' => $usr, 'cart.status' => 1]);
@@ -53,6 +53,10 @@ class Cart_model extends CI_Model
 
 		$srv = self::get_service($service);
 		if (empty($srv)) return null;
+
+		$this->db->where(['user_id' => $usr, 'service_id' => $srv->id, 'status' => 1]);
+		$response = $this->db->get('cart')->result();
+		if (!empty($response)) return false;
 
 		$data = [
 					'user_id' => $usr,

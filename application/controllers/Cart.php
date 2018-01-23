@@ -41,9 +41,15 @@ class Cart extends REST_Controller
 		$service = trim($this->post('service'));
 
 		$cart = $this->cart_model->add_cart($email, $service);
-		if (empty($cart)) $this->response([
+		
+		if (is_null($cart)) $this->response([
 		                    'status' => FALSE,
 			                'message' => 'Unable to add service to cart'
+			            ], REST_Controller::HTTP_BAD_REQUEST);
+
+		if ($cart == false) $this->response([
+		                    'status' => FALSE,
+			                'message' => 'Item already in cart'
 			            ], REST_Controller::HTTP_BAD_REQUEST);
 
 		$this->response([
