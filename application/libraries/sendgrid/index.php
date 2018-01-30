@@ -11,7 +11,7 @@ $to = new SendGrid\Email("Joshua Bakasa", "bakasajoshua09@gmail.com");
 $content = new SendGrid\Content("text/plain", "and easy to do anywhere, even with PHP");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 //
-$apiKey = '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';
+
 //$apiKey = getenv('SENDGRID_API_KEY');
 $sg = new \SendGrid($apiKey);
 
